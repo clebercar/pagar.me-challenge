@@ -1,0 +1,22 @@
+version: "3"
+services:
+  psp:
+    container_name: app-psp
+    build: ./app
+    command: yarn dev
+    volumes:
+      - ./app:/app
+    ports:
+      - 3000:3000
+      - 9229:9229
+    depends_on:
+      - db
+  db:
+    image: postgres
+    container_name: db-psp
+    env_file:
+      - ./config/postgres.env
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./tmp/data/db:/var/lib/postgresql/data

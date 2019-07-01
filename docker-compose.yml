@@ -20,3 +20,12 @@ services:
       - "15432:5432"
     volumes:
       - ./tmp/data/db:/var/lib/postgresql/data
+  db-admin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "contatoclebercarvalho@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin+2"
+    ports:
+      - "16543:80"
+    depends_on:
+      - db

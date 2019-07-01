@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js --ignore __tests__"
+    "dev": "nodemon src/server.js --ignore __tests__",
+    "test": "NODE_ENV=test jest"
   },
   "author": "Cleber Carvalho",
   "license": "MIT",
@@ -16,6 +17,7 @@
     "sequelize": "^5.9.0"
   },
   "devDependencies": {
+    "jest": "^24.8.0",
     "sequelize-cli": "^5.5.0"
   }
 }

@@ -1,49 +1,47 @@
-'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('transactions', { 
+    return queryInterface.createTable('transactions', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
+        allowNull: false
       },
       value: {
-        type: Sequelize.DECIMAL(10,2),
-        allowNull: false,
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false
       },
       description: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: false
       },
       payment_type: {
         type: Sequelize.ENUM('debit_card', 'credit_card'),
-        allowNull: false,
+        allowNull: false
       },
       card_number: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       name_on_card: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       expiration_date: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       cvv: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -53,7 +51,7 @@ module.exports = {
           model: 'users',
           key: 'id'
         }
-      },
+      }
     })
   },
 

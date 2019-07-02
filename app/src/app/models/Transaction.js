@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Transaction = sequelize.define('Transaction',{
-    value: DataTypes.DECIMAL(10,2),
+  const Transaction = sequelize.define('Transaction', {
+    value: DataTypes.DECIMAL(10, 2),
     description: DataTypes.TEXT,
     payment_type: DataTypes.ENUM('debit_card', 'credit_card'),
     card_number: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   Transaction.associate = models => {
-    Transaction.belongsTo(models.User, {foreignKey: 'user_id', as: 'user'})
+    Transaction.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
   }
 
   return Transaction

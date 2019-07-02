@@ -6,11 +6,6 @@
 		"jest": true
 	},
 	"extends": "standard",
-	"globals": {
-		"Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
-    "db": true
-	},
 	"parserOptions": {
 		"ecmaVersion": 2018
 	},

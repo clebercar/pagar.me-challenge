@@ -1,18 +1,18 @@
 const express = require('express');
 
 class AppController {
-  constructor() {
+  constructor () {
     this.express = express()
 
     this.middlewares()
     this.routes()
   }
 
-  middlewares() {
+  middlewares () {
     this.express.use(express.json())
   }
 
-  routes() {
+  routes () {
     this.express.use(require('./routes'))
   }
 }

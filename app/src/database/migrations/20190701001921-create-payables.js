@@ -1,21 +1,19 @@
-'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('payables', { 
+    return queryInterface.createTable('payables', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
+        allowNull: false
       },
       status: {
         type: Sequelize.ENUM('paid', 'waiting_funds'),
-        allowNull: false,
+        allowNull: false
       },
       fee: {
-        type: Sequelize.DECIMAL(10,2),
-        allowNull: false,
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false
       },
       transaction_id: {
         type: Sequelize.INTEGER,
@@ -25,7 +23,7 @@ module.exports = {
           model: 'transactions',
           key: 'id'
         }
-      },
+      }
     })
   },
 

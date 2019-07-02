@@ -8,7 +8,7 @@ module.exports = {
         allowNull: false
       },
       value: {
-        type: Sequelize.DECIMAL(10, 2),
+        type: Sequelize.DECIMAL,
         allowNull: false
       },
       description: {
@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false
       },
       card_number: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
       },
       name_on_card: {
@@ -32,7 +32,7 @@ module.exports = {
         allowNull: false
       },
       cvv: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
       },
       created_at: {

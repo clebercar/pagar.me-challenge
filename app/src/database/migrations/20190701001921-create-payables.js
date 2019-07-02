@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false
       },
       value: {
-        type: Sequelize.DECIMAL(10, 2),
+        type: Sequelize.DECIMAL,
         allowNull: false
       },
       transaction_id: {

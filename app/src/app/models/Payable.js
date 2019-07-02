@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Payable = sequelize.define('Payable', {
     status: DataTypes.ENUM('paid', 'waiting_funds'),
-    fee: DataTypes.DECIMAL(10, 2)
+    value: DataTypes.DECIMAL(10, 2)
   })
 
   Payable.associate = models => {

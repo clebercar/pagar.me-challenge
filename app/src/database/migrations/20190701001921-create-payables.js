@@ -11,7 +11,7 @@ module.exports = {
         type: Sequelize.ENUM('paid', 'waiting_funds'),
         allowNull: false
       },
-      fee: {
+      value: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
       },

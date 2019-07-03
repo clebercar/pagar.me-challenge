@@ -8,11 +8,24 @@ module.exports = {
         allowNull: false
       },
       status: {
-        type: Sequelize.ENUM('paid', 'waiting_funds'),
+        type: Sequelize.ENUM,
+        values: ['paid', 'waiting_funds'],
         allowNull: false
       },
-      value: {
+      payment_date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      amount: {
         type: Sequelize.DECIMAL,
+        allowNull: false
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updated_at: {
+        type: Sequelize.DATE,
         allowNull: false
       },
       transaction_id: {

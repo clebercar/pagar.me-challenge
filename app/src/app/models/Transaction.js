@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Transaction = sequelize.define('Transaction', {
-    value: DataTypes.DECIMAL,
+    value: DataTypes.DECIMAL(10, 2),
     description: DataTypes.TEXT,
     payment_type: DataTypes.ENUM('debit_card', 'credit_card'),
     card_number: DataTypes.INTEGER,

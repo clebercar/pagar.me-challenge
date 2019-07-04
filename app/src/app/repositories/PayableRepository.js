@@ -3,7 +3,7 @@ const { Payable } = require('../models')
 class PayableRepository {
   async create (transaction) {
     console.log('payable', Payable)
-    const { status, payment_date, amount } = Payable.checkPaymentType(transaction)
+    const { status, payment_date, amount } = Payable.checkTransaction(transaction)
 
     const payable = await Payable.create({
       status,

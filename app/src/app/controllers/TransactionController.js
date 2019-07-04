@@ -1,5 +1,5 @@
 const TransactionRepository = require('../repositories/TransactionRepository')
-const { Payable } = require('../models')
+const PayableRepository = require('../repositories/PayableRepository')
 
 class TransactionController {
   async index (req, res) {
@@ -9,13 +9,7 @@ class TransactionController {
 
   async create (req, res) {
     const transaction = await TransactionRepository.create(req.body)
-
-    await Payable.create({
-      status: 'paid',
-      payment_date: '2020-12-15',
-      amount: 320.50,
-      transaction_id: transaction.id
-    })
+    await PayableRepository.create(transaction)
 
     res.json(transaction)
   }

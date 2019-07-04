@@ -8,10 +8,13 @@ module.exports = (sequelize, DataTypes) => {
       payment_date: DataTypes.DATE,
       amount: DataTypes.DECIMAL(10, 2),
       transaction_id: DataTypes.INTEGER
-    },
-    {
-      hooks: {
-        beforeSave: async payable => {
+    }
+  )
+
+  Payable.transactionFee = function (transactionValue, percentege) {
+    return transactionValue - transactionValue * percentege
+  }
+
         }
       }
     }

@@ -33,7 +33,9 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Payable.associate = models => {
-    Payable.hasOne(models.Transaction, { foreignKey: 'transaction_id', as: 'transaction' })
+    Payable.belongsTo(models.Transaction,
+      { foreignKey: 'transaction_id', as: 'transaction' }
+    )
   }
 
   return Payable

@@ -7,8 +7,10 @@ class TransactionRepository {
     return transaction
   }
 
-  async all () {
-    const transaction = await Transaction.findAll({})
+  async all (userId) {
+    const transaction = await Transaction
+      .findAll({ where: { user_id: userId } })
+
     return transaction
   }
 }

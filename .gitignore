@@ -1,4 +1,5 @@
 /app/node_modules
 /app/.env
 /app/.env.test
+/app/logs/*
 /tmp

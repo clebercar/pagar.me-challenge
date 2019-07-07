@@ -1,10 +1,11 @@
-/* eslint no-unexpected-multiline: "error" */
-const Sequelize = require('sequelize')
-const { Payable } = require('../models')
+const { Payable, sequelize, Sequelize } = require('../models')
+const moment = require('moment')
+const logger = require('../../config/winston')
 
 class PayableRepository {
   async create (transaction) {
-    const { status, payment_date, amount } = Payable.checkTransaction(transaction)
+    const { status, payment_date, amount } = Payable
+      .checkTransaction(transaction)
 
     const payable = await Payable.create({
       status,
@@ -31,15 +32,23 @@ class PayableRepository {
     })
 
     return payables
-    }
+  }
 
-    const payables = await Payable.findAll({
-      attributes: [
-        [Sequelize.literal(cases.available), 'available'],
-        [Sequelize.literal(cases.waitingFunds), 'waiting_funds']]
-    })
+  async changePayablesToPaid () {
+    const payablesToPaid = await Payable.update(
+      { status: 'paid' },
+      {
+        where: {
+          status: 'waiting_funds',
+          payment_date: {
+            [Sequelize.Op.gte]: moment().format('YYYY-MM-DD HH:mm:ss')
+          }
+        }
+      }
+    )
 
-    return payables
+    logger.info(`Total de payables change: ${payablesToPaid}`)
+    return payablesToPaid
   }
 }
 

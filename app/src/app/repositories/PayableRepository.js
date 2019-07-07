@@ -16,10 +16,21 @@ class PayableRepository {
     return payable
   }
 
-  async findBalances () {
-    const cases = {
-      available: "SUM(CASE WHEN status = 'paid' THEN amount END)",
-      waitingFunds: "SUM(CASE WHEN status = 'waiting_funds' THEN amount END)"
+  async findBalances (userId) {
+    const payables = await sequelize.query(`
+      SELECT
+        SUM(CASE WHEN status = 'paid' THEN amount END) AS "available", 
+        SUM(CASE WHEN status = 'waiting_funds' THEN amount END) AS "waiting_funds"
+      FROM payables 
+      INNER JOIN transactions ON payables.transaction_id = transactions.id 
+      AND transactions.user_id = (:userId)`,
+    {
+      replacements: { userId },
+      model: Payable,
+      mapToModel: true
+    })
+
+    return payables
     }
 
     const payables = await Payable.findAll({

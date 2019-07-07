@@ -1,9 +1,13 @@
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+})
+
 module.exports = {
-  host: 'db-psp',
-  username: 'payment_service',
-  password: 'payment_service',
-  database: 'payment_service_development',
-  dialect: 'postgres',
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  dialect: process.env.DB_DIALECT || 'postgres',
   operatorsAliases: false,
   loggin: false,
   define: {

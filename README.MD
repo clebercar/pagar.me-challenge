@@ -27,7 +27,7 @@ Start the application with docker-compose.
 
 Run migrations
 ```
-docker exec -it app-psp yarn sequelize db:migrations
+docker exec -it app-psp yarn sequelize db:migrate
 ```
 
 You can now access the project from port 3000

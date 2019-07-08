@@ -9,7 +9,6 @@ describe('User Controller', () => {
 
     beforeEach(async () => {
       userAttrs = await factory.attrs('User')
-        .then(attributes => attributes)
 
       response = await request(app)
         .post('/api/v1/users')

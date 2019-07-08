@@ -14,4 +14,3 @@ install:
 - npm install
 script:
 - npm test
-- build-travis.sh

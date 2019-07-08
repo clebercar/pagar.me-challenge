@@ -65,6 +65,8 @@ docker exec -it app-psp yarn test
 
 ### Create Transactions
 - Method: POST
+- Headers
+    - Authorization: Bearer token
 - URI
     ```
     /api/v1/transactions
@@ -79,18 +81,24 @@ docker exec -it app-psp yarn test
   - cvv
 ### Lists all user transactions
 - Method: GET
+- Headers
+    - Authorization: Bearer token
 - URI
     ```
     /api/v1/transactions
     ```
 ### Changing payable for paid
 - Method: GET
+- Headers
+    - Authorization: Bearer token
 - URI
     ```
     /api/v1/payables/change-payables-to-paid
     ```
 ### List user balances
 - Method: GET
+- Headers
+    - Authorization: Bearer token
 - URI
     ```
     /api/v1/payables/change-payables-to-paid

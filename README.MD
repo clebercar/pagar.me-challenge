@@ -14,12 +14,13 @@ Clone and access the project folder:
 git clone https://github.com/clebercar/pagar.me-challenge.git
 cd pagar.me-challenge
 ```
+![Clone](https://i.imgsafe.org/39/39d87e0c99.gif)
 
 Duplicate and rename the .env-example file to .env and the .env.test.example to .env.test.
-
-- .env-example .env
-- .env.test.example .env.test
-
+```
+cp .env-example .env
+cp .env.test-example .env.test
+```
 Start the application with docker-compose.
 
 - docker-compose up --build

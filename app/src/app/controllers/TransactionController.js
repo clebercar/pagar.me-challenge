@@ -10,7 +10,7 @@ class TransactionController {
   async create (req, res) {
     try {
       const transaction = await TransactionRepository
-        .create({ user_id: req.userId, ...req.body })
+        .create({ ...req.body, user_id: req.userId })
 
       await PayableRepository.create(transaction)
 

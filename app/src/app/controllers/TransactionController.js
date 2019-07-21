@@ -1,3 +1,4 @@
+const { sequelize } = require('../models')
 const TransactionRepository = require('../repositories/TransactionRepository')
 const PayableRepository = require('../repositories/PayableRepository')
 
@@ -8,19 +9,26 @@ class TransactionController {
   }
 
   async create (req, res) {
-    try {
-      const transaction = await TransactionRepository
-        .create({ ...req.body, user_id: req.userId })
+    let dataBaseTransaction
 
-      await PayableRepository.create(transaction)
+    try {
+      dataBaseTransaction = await sequelize.transaction()
+
+      const transaction = await TransactionRepository
+        .create({ ...req.body, user_id: req.userId }, { dataBaseTransaction })
+
+      await PayableRepository.create(transaction, { dataBaseTransaction })
+
+      await dataBaseTransaction.commit()
 
       return res.status(200).send(transaction)
-    } catch (err) {
-      const errors = {
-        errors: err.errors.map((item) => item.message)
-      }
+    } catch (error) {
+      if (error) await dataBaseTransaction.rollback()
 
-      return res.status(400).send(errors)
+      const message = `There was an error creating the transaction, 
+        please contact support.`
+
+      return res.status(400).json({ 'message': message })
     }
   }
 }

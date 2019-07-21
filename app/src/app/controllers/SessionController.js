@@ -6,12 +6,8 @@ class SessionController {
 
     const user = await UserRepository.findByEmail(email)
 
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' })
-    }
-
-    if (!await user.checkPassword(password)) {
-      return res.status(401).json({ message: 'Incorret password' })
+    if (!user || !await user.checkPassword(password)) {
+      return res.status(401).json({ message: 'Email or password incorrect' })
     }
 
     return res.json({
